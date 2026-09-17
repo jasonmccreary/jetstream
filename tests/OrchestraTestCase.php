@@ -2,6 +2,7 @@
 
 namespace Laravel\Jetstream\Tests;
 
+use JMac\Testing\Integrations\PHPUnit\VerifiesDoubles;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Laravel\Fortify\FortifyServiceProvider;
 use Laravel\Jetstream\Features;
@@ -14,6 +15,8 @@ use Orchestra\Testbench\TestCase;
 #[WithConfig('database.default', 'testing')]
 abstract class OrchestraTestCase extends TestCase
 {
+    use VerifiesDoubles;
+
     use LazilyRefreshDatabase, WithWorkbench;
 
     protected function defineHasTeamEnvironment($app)
