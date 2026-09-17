@@ -30,7 +30,6 @@
         "inertiajs/inertia-laravel": "^2.0",
         "laravel/sanctum": "^4.0",
         "livewire/livewire": "^3.3",
-        "mockery/mockery": "^1.0",
         "orchestra/testbench": "^9.15|^10.8|^11.0",
         "phpstan/phpstan": "^1.10",
         "jasonmccreary/double": "~0.10"
