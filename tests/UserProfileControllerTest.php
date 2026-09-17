@@ -2,6 +2,7 @@
 
 namespace Laravel\Jetstream\Tests;
 
+use JMac\Testing\Double;
 use Laravel\Fortify\Actions\DisableTwoFactorAuthentication;
 use Laravel\Fortify\Features;
 use Laravel\Jetstream\Jetstream;
@@ -40,7 +41,7 @@ class UserProfileControllerTest extends OrchestraTestCase
         $disable = $this->mock(DisableTwoFactorAuthentication::class);
         $disable->shouldReceive('__invoke')->once();
 
-        Jetstream::$inertiaManager = $inertia = m::mock();
+        Jetstream::$inertiaManager = $inertia = Double::for(\stdClass::class);
         $inertia->shouldReceive('render')->once();
 
         $user = User::forceCreate([
@@ -61,7 +62,7 @@ class UserProfileControllerTest extends OrchestraTestCase
         $disable = $this->mock(DisableTwoFactorAuthentication::class);
         $disable->shouldReceive('__invoke')->never();
 
-        Jetstream::$inertiaManager = $inertia = m::mock();
+        Jetstream::$inertiaManager = $inertia = Double::for(\stdClass::class);
         $inertia->shouldReceive('render')->once();
 
         $user = User::forceCreate([
@@ -83,7 +84,7 @@ class UserProfileControllerTest extends OrchestraTestCase
         $disable = $this->mock(DisableTwoFactorAuthentication::class);
         $disable->shouldReceive('__invoke')->once();
 
-        Jetstream::$inertiaManager = $inertia = m::mock();
+        Jetstream::$inertiaManager = $inertia = Double::for(\stdClass::class);
         $inertia->shouldReceive('render')->once();
 
         $user = User::forceCreate([
