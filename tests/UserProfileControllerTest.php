@@ -7,7 +7,6 @@ use Laravel\Fortify\Actions\DisableTwoFactorAuthentication;
 use Laravel\Fortify\Features;
 use Laravel\Jetstream\Jetstream;
 use Laravel\Jetstream\Tests\Fixtures\User;
-use Mockery as m;
 use Orchestra\Testbench\Attributes\WithConfig;
 
 #[WithConfig('jetstream.stack', 'inertia')]
