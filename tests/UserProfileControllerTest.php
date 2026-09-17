@@ -2,11 +2,12 @@
 
 namespace Laravel\Jetstream\Tests;
 
+use JMac\Testing\Double;
 use Laravel\Fortify\Actions\DisableTwoFactorAuthentication;
 use Laravel\Fortify\Features;
+use Laravel\Jetstream\InertiaManager;
 use Laravel\Jetstream\Jetstream;
 use Laravel\Jetstream\Tests\Fixtures\User;
-use Mockery as m;
 use Orchestra\Testbench\Attributes\WithConfig;
 
 #[WithConfig('jetstream.stack', 'inertia')]
@@ -38,10 +39,10 @@ class UserProfileControllerTest extends OrchestraTestCase
     public function test_empty_two_factor_state_is_noted()
     {
         $disable = $this->mock(DisableTwoFactorAuthentication::class);
-        $disable->shouldReceive('__invoke')->once();
+        $disable->expects('__invoke');
 
-        Jetstream::$inertiaManager = $inertia = m::mock();
-        $inertia->shouldReceive('render')->once();
+        Jetstream::$inertiaManager = $inertia = Double::for(InertiaManager::class);
+        $inertia->expects('render');
 
         $user = User::forceCreate([
             'name' => 'Taylor Otwell',
@@ -59,10 +60,10 @@ class UserProfileControllerTest extends OrchestraTestCase
     public function test_two_factor_is_not_disabled_if_was_previously_empty_and_currently_confirming()
     {
         $disable = $this->mock(DisableTwoFactorAuthentication::class);
-        $disable->shouldReceive('__invoke')->never();
+        $disable->expects('__invoke')->never();
 
-        Jetstream::$inertiaManager = $inertia = m::mock();
-        $inertia->shouldReceive('render')->once();
+        Jetstream::$inertiaManager = $inertia = Double::for(InertiaManager::class);
+        $inertia->expects('render');
 
         $user = User::forceCreate([
             'name' => 'Taylor Otwell',
@@ -81,10 +82,10 @@ class UserProfileControllerTest extends OrchestraTestCase
     public function test_two_factor_is_disabled_if_was_previously_confirming_and_page_is_reloaded()
     {
         $disable = $this->mock(DisableTwoFactorAuthentication::class);
-        $disable->shouldReceive('__invoke')->once();
+        $disable->expects('__invoke');
 
-        Jetstream::$inertiaManager = $inertia = m::mock();
-        $inertia->shouldReceive('render')->once();
+        Jetstream::$inertiaManager = $inertia = Double::for(InertiaManager::class);
+        $inertia->expects('render');
 
         $user = User::forceCreate([
             'name' => 'Taylor Otwell',
