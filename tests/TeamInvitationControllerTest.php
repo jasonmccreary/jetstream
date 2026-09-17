@@ -26,7 +26,7 @@ class TeamInvitationControllerTest extends OrchestraTestCase
 
     public function test_team_invitations_can_be_accepted()
     {
-        $this->mock(AddsTeamMembers::class)->shouldReceive('add')->once();
+        $this->mock(AddsTeamMembers::class)->expects('add');
 
         Jetstream::role('admin', 'Admin', ['foo', 'bar']);
         Jetstream::role('editor', 'Editor', ['baz', 'qux']);
