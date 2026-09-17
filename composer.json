@@ -1,7 +1,11 @@
 {
     "name": "laravel/jetstream",
     "description": "Tailwind scaffolding for the Laravel framework.",
-    "keywords": ["laravel", "tailwind", "auth"],
+    "keywords": [
+        "laravel",
+        "tailwind",
+        "auth"
+    ],
     "license": "MIT",
     "support": {
         "issues": "https://github.com/laravel/jetstream/issues",
@@ -28,7 +32,8 @@
         "livewire/livewire": "^3.3",
         "mockery/mockery": "^1.0",
         "orchestra/testbench": "^9.15|^10.8|^11.0",
-        "phpstan/phpstan": "^1.10"
+        "phpstan/phpstan": "^1.10",
+        "jasonmccreary/double": "~0.10"
     },
     "autoload": {
         "psr-4": {
